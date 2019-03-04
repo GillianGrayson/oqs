@@ -2,14 +2,14 @@
 
 # CMake build : third party
 
-#configure directories
+# configure directories
 set (THIRD_PARTY_MODULE_PATH "${PROJECT_SOURCE_DIR}/third_party")
 
 # -------------------------------------------------------------------------
 # catch
 # -------------------------------------------------------------------------
 
-#configure directories
+# configure directories
 set (CATCH_MODULE_PATH "${THIRD_PARTY_MODULE_PATH}/Catch2")
 set (CATCH_INCLUDE_PATH "${CATCH_MODULE_PATH}/single_include/catch2")
 
@@ -20,7 +20,7 @@ include ("${CATCH_MODULE_PATH}/contrib/ParseAndAddCatchTests.cmake")
 # spdlog
 # -------------------------------------------------------------------------
 
-#configure directories
+# configure directories
 set (SPDLOG_MODULE_PATH "${THIRD_PARTY_MODULE_PATH}/spdlog")
 set (SPDLOG_INCLUDE_PATH "${SPDLOG_MODULE_PATH}/include")
 
