@@ -6,103 +6,115 @@
 #include <sstream>
 #include <memory>
 
-namespace ModernCppCI {
+namespace oqs
+{
+	namespace Test
+	{
+		TEST_CASE("calc should be created", "[calc]")
+		{
+			auto calc = std::make_unique<Calc>();
 
-namespace Test {
+			REQUIRE(calc != nullptr);
+		}
 
-TEST_CASE("calc should be created", "[calc]") {
-  auto calc = std::make_unique<Calc>();
+		TEST_CASE("we could use +", "[calc]")
+		{
+			auto calc = Calc{} << 2 << "+" << 1;
 
-  REQUIRE(calc != nullptr);
-}
+			REQUIRE(calc.result() == 3);
+		}
 
-TEST_CASE("we could use +", "[calc]") {
-  auto calc = Calc{} << 2 << "+" << 1;
+		TEST_CASE("we could use -", "[calc]")
+		{
+			auto calc = Calc{} << 2 << "-" << 1;
 
-  REQUIRE(calc.result() == 3);
-}
+			REQUIRE(calc.result() == 1);
+		}
 
-TEST_CASE("we could use -", "[calc]") {
-  auto calc = Calc{} << 2 << "-" << 1;
+		TEST_CASE("we could use *", "[calc]")
+		{
+			auto calc = Calc{} << 2 << "*" << 1;
 
-  REQUIRE(calc.result() == 1);
-}
+			REQUIRE(calc.result() == 2);
+		}
 
-TEST_CASE("we could use *", "[calc]") {
-  auto calc = Calc{} << 2 << "*" << 1;
+		TEST_CASE("we could use /", "[calc]")
+		{
+			auto calc = Calc{} << 2 << "/" << 1;
 
-  REQUIRE(calc.result() == 2);
-}
+			REQUIRE(calc.result() == 2);
+		}
 
-TEST_CASE("we could use /", "[calc]") {
-  auto calc = Calc{} << 2 << "/" << 1;
+		TEST_CASE("invalid operation return 0", "[calc]")
+		{
+			auto calc = Calc{} << 2 << "random" << 1;
 
-  REQUIRE(calc.result() == 2);
-}
+			REQUIRE(calc.result() == 0);
+		}
 
-TEST_CASE("invalid operation return 0", "[calc]") {
-  auto calc = Calc{} << 2 << "random" << 1;
+		TEST_CASE("chain operations will work", "[calc]")
+		{
+			auto calc = Calc{} << 1 << "+" << 2 << "*" << 5 << "-" << 3 << "/" << 4;
 
-  REQUIRE(calc.result() == 0);
-}
+			REQUIRE(calc.result() == 3);
+		}
 
-TEST_CASE("chain operations will work", "[calc]") {
-  auto calc = Calc{} << 1 << "+" << 2 << "*" << 5 << "-" << 3 << "/" << 4;
+		TEST_CASE("we could stream results", "[calc]")
+		{
+			std::ostringstream string_stream{};
 
-  REQUIRE(calc.result() == 3);
-}
+			string_stream << (Calc{} << 1 << "+" << 2);
 
-TEST_CASE("we could stream results", "[calc]") {
-  std::ostringstream string_stream{};
+			REQUIRE(string_stream.str() == "1 + 2 = 3");
+		}
 
-  string_stream << (Calc{} << 1 << "+" << 2);
+		TEST_CASE("default operation Plus will work", "[operations]")
+		{
+			auto result = DefaultOperations::Plus(10, 2);
 
-  REQUIRE(string_stream.str() == "1 + 2 = 3");
-}
+			REQUIRE(result == 12);
+		}
 
-TEST_CASE("default operation Plus will work", "[operations]") {
-  auto result = DefaultOperations::Plus(10, 2);
+		TEST_CASE("default operation Minus will work", "[operations]")
+		{
+			auto result = DefaultOperations::Minus(10, 2);
 
-  REQUIRE(result == 12);
-}
+			REQUIRE(result == 8);
+		}
 
-TEST_CASE("default operation Minus will work", "[operations]") {
-  auto result = DefaultOperations::Minus(10, 2);
+		TEST_CASE("default operation Times will work", "[operations]")
+		{
+			auto result = DefaultOperations::Times(10, 2);
 
-  REQUIRE(result == 8);
-}
+			REQUIRE(result == 20);
+		}
 
-TEST_CASE("default operation Times will work", "[operations]") {
-  auto result = DefaultOperations::Times(10, 2);
+		TEST_CASE("default operation Div will work", "[operations]")
+		{
+			auto result = DefaultOperations::Div(10, 2);
 
-  REQUIRE(result == 20);
-}
+			REQUIRE(result == 5);
+		}
 
-TEST_CASE("default operation Div will work", "[operations]") {
-  auto result = DefaultOperations::Div(10, 2);
+		TEST_CASE("default operation Zero will work", "[operations]")
+		{
+			auto result = DefaultOperations::Zero(10, 2);
 
-  REQUIRE(result == 5);
-}
+			REQUIRE(result == 0);
+		}
 
-TEST_CASE("default operation Zero will work", "[operations]") {
-  auto result = DefaultOperations::Zero(10, 2);
+		TEST_CASE("adding steps will work", "[calc]")
+		{
+			Calc calc{};
 
-  REQUIRE(result == 0);
-}
+			REQUIRE(calc.total_steps() == 0);
 
-TEST_CASE("adding steps will work", "[calc]") {
-  Calc calc{};
+			calc.add_step(2);
+			calc.add_step("+");
+			calc.add_step(3);
 
-  REQUIRE(calc.total_steps() == 0);
-
-  calc.add_step(2);
-  calc.add_step("+");
-  calc.add_step(3);
-
-  REQUIRE(calc.total_steps() == 3);
-  REQUIRE(calc.result() == 5);
-}
-
-}  // namespace Test
-
-}  // namespace ModernCppCI
+			REQUIRE(calc.total_steps() == 3);
+			REQUIRE(calc.result() == 5);
+		}
+	} // namespace Test
+} // namespace oqs
