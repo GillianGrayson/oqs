@@ -2,8 +2,8 @@
 
 namespace oqs
 {
-	int qj_step(const int n)
+	void prop_step(Eigen::VectorXcd& y, const Eigen::MatrixXd& A, const Eigen::VectorXcd& x)
 	{
-		return 1;
+		y.noalias() = A * x;
 	}
 } // namespace oqs

@@ -25,7 +25,16 @@ set (SPDLOG_MODULE_PATH "${THIRD_PARTY_MODULE_PATH}/spdlog")
 set (SPDLOG_INCLUDE_PATH "${SPDLOG_MODULE_PATH}/include")
 
 # -------------------------------------------------------------------------
+# eigen-git-mirror
+# -------------------------------------------------------------------------
+
+# configure directories
+set (EIGEN_MODULE_PATH "${THIRD_PARTY_MODULE_PATH}/eigen-git-mirror")
+set (EIGEN_INCLUDE_PATH "${EIGEN_MODULE_PATH}")
+
+# -------------------------------------------------------------------------
 # export vars
 # -------------------------------------------------------------------------
 set (SPDLOG_INCLUDE_PATH  ${SPDLOG_INCLUDE_PATH} PARENT_SCOPE)
 set (CATCH_INCLUDE_PATH  ${CATCH_INCLUDE_PATH} PARENT_SCOPE)
+set (EIGEN_INCLUDE_PATH  ${EIGEN_INCLUDE_PATH} PARENT_SCOPE)

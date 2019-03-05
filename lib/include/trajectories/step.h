@@ -6,13 +6,17 @@
 #pragma once
 #endif
 
-#include <list>
-#include <vector>
-#include <complex>
+#include <Eigen/Dense>
 
 namespace oqs
 {
-	int qj_step(const int n);
+	/** \brief Performs propagation step: y=A*x
+	  *
+	  * \tparam A: propagation matrix of non-hermitian hamiltonian.
+	  * \tparam x: vector of wave function's previous state.
+	  * \tparam y: vector of wave function's next state.
+	*/
+	void prop_step(Eigen::VectorXcd& y, const Eigen::MatrixXd& A, const Eigen::VectorXcd& x);
 } // namespace oqs
 
 #endif  // STEP_HPP
