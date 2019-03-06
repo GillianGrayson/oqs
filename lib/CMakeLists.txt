@@ -22,6 +22,8 @@ include_directories (${LIBRARY_INCLUDE_PATH} ${SPDLOG_INCLUDE_PATH} ${EIGEN_INCL
 file (GLOB_RECURSE LIB_HEADER_FILES "${LIBRARY_INCLUDE_PATH}/*.h")
 file (GLOB_RECURSE LIB_SOURCE_FILES "${LIBRARY_SRC_PATH}/*.cpp")
 
+message("LIB_HEADER_FILES: " ${LIB_HEADER_FILES})
+
 #set library
 add_library (${LIB_NAME} STATIC ${LIB_SOURCE_FILES} ${LIB_HEADER_FILES})
 
@@ -48,5 +50,6 @@ target_link_libraries (${TEST_APP_NAME} ${LIB_NAME} Threads::Threads)
 # Turn on CMake testing capabilities
 enable_testing()
 
-#parse catch tests
-ParseAndAddCatchTests (${TEST_APP_NAME})
+# Parse catch tests
+ParseAndAddCatchTests(${TEST_APP_NAME})
+add_test(NAME ${TEST_APP_NAME} COMMAND ${TEST_APP_NAME})

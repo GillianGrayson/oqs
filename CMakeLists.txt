@@ -18,8 +18,6 @@ add_subdirectory (third_party EXCLUDE_FROM_ALL)
 add_subdirectory (lib)
 add_subdirectory (app)
 
-enable_testing ()
-
 option (CODE_COVERAGE "Enable coverage reporting" OFF)
 if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
   # Add required flags (GCC & LLVM/Clang)
