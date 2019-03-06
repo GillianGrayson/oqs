@@ -12,7 +12,7 @@ namespace oqs
 		file << dense.format(common_fmt);
 	}*/
 
-	void save_dense(std::string file_name, const Eigen::MatrixX2cd& dense)
+	void save_dense(std::string file_name, const Eigen::MatrixXcd& dense)
 	{
 		const Eigen::IOFormat common_fmt(Eigen::FullPrecision, 0, "", "\n", "", "", "", "");
 		std::ofstream file(file_name.c_str());

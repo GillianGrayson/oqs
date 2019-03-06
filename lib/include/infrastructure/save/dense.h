@@ -21,7 +21,7 @@ namespace oqs
 	*/
 	//template <typename Derived>
 	//void save_dense(std::string file_name, const Eigen::DenseBase<Derived>& dense);
-	void save_dense(std::string file_name, const Eigen::MatrixX2cd& dense);
+	void save_dense(std::string file_name, const Eigen::MatrixXcd& dense);
 } // namespace oqs
 
 #endif // INF_SAVE_MTX_HPP
