@@ -1,5 +1,5 @@
-#ifndef STEP_HPP
-#define STEP_HPP
+#ifndef TRAJ_PROP_STEP_HPP
+#define TRAJ_PROP_STEP_HPP
 
 // MS compatible compilers support #pragma once
 #if defined(_MSC_VER)
@@ -20,4 +20,4 @@ namespace oqs
 	void prop_step(Eigen::VectorXcd& y, const Eigen::MatrixXcd& A, const Eigen::VectorXcd& x);
 } // namespace oqs
 
-#endif  // STEP_HPP
+#endif // TRAJ_PROP_STEP_HPP

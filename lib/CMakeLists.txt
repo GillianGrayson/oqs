@@ -48,5 +48,5 @@ target_link_libraries (${TEST_APP_NAME} ${LIB_NAME} Threads::Threads)
 # Turn on CMake testing capabilities
 enable_testing()
 
-#parse catch tests
-ParseAndAddCatchTests (${TEST_APP_NAME})
+# Parse catch tests
+ParseAndAddCatchTests(${TEST_APP_NAME})
