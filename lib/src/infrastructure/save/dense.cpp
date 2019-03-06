@@ -1,7 +1,5 @@
 #include "infrastructure/save/dense.h"
 
-
-
 namespace oqs
 {
 	/*template <typename Derived>
