@@ -19,7 +19,7 @@ namespace oqs
 			A(2, 2) = {7.0, 3.0};
 
 			const std::string file_name = "matrix_cd.txt";
-			save_dense(file_name, A);
+			oqs::save_dense(file_name, A);
 
 			REQUIRE(std::filesystem::exists(file_name));
 

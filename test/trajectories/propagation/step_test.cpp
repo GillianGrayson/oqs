@@ -29,7 +29,7 @@ namespace oqs
 			x(2) = {-1.0, -10.0};
 
 			Eigen::VectorXcd y_test(3);
-			prop_step(y_test, A, x);
+			oqs::prop_step(y_test, A, x);
 
 			REQUIRE(y_real.isApprox(y_test));
 		}

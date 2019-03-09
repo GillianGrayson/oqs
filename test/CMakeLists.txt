@@ -12,6 +12,7 @@ add_executable (${TEST_APP_NAME} ${TEST_SOURCE_FILES})
 
 # add the library and nessesary packages
 target_link_libraries(${TEST_APP_NAME} ${LIB_NAME} Threads::Threads)
+target_compile_features(${TEST_APP_NAME} PUBLIC cxx_std_17)
 
 # Turn on CMake testing capabilities
 enable_testing()
