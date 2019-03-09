@@ -6,7 +6,7 @@
 set (APP_NAME "${PROJECT_NAME}App")
 
 #configure directories
-set (APP_MODULE_PATH "${PROJECT_SOURCE_DIR}/app")
+set (APP_MODULE_PATH "${PROJECT_SOURCE_DIR}/example")
 set (APP_SRC_PATH  "${APP_MODULE_PATH}/src" )
 
 #set includes

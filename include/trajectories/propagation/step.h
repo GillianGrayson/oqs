@@ -1,5 +1,5 @@
-#ifndef STEP_HPP
-#define STEP_HPP
+#ifndef TRAJ_PROP_STEP_HPP
+#define TRAJ_PROP_STEP_HPP
 
 // MS compatible compilers support #pragma once
 #if defined(_MSC_VER)
@@ -17,7 +17,10 @@ namespace oqs
 	  * \tparam x: vector of wave function's previous state.
 	  * \tparam y: vector of wave function's next state.
 	*/
-	void prop_step(Eigen::VectorXcd& y, const Eigen::MatrixXcd& A, const Eigen::VectorXcd& x);
+	void prop_step(Eigen::VectorXcd& y, const Eigen::MatrixXcd& A, const Eigen::VectorXcd& x)
+	{
+		y.noalias() = A * x;
+	}
 } // namespace oqs
 
-#endif  // STEP_HPP
+#endif // TRAJ_PROP_STEP_HPP
