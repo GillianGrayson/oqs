@@ -1,14 +1,17 @@
-#configure variables
-set (TEST_APP_NAME "${LIB_NAME}Test")
+# configure variables
+set (TEST_APP_NAME "${LIB_NAME}_test")
 
-#set test sources
-file (GLOB_RECURSE TEST_SOURCE_FILES "${LIB_TEST_PATH}/*.cpp")
+# configure directories
+set(LIB_TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
-#set target executable
+# set test sources
+file(GLOB_RECURSE TEST_SOURCE_FILES "${LIB_TEST_PATH}/*.cpp")
+
+# set target executable
 add_executable (${TEST_APP_NAME} ${TEST_SOURCE_FILES})
 
-#add the library
-target_link_libraries (${TEST_APP_NAME} ${LIB_NAME} Threads::Threads)
+# add the library and nessesary packages
+target_link_libraries(${TEST_APP_NAME} ${LIB_NAME} Threads::Threads)
 
 # Turn on CMake testing capabilities
 enable_testing()
@@ -16,6 +19,7 @@ enable_testing()
 # Parse catch tests
 ParseAndAddCatchTests(${TEST_APP_NAME})
 
+# code coverage
 option (CODE_COVERAGE "Enable coverage reporting." OFF)
 if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 	# Add required flags (GCC & LLVM/Clang)

@@ -1,26 +1,14 @@
-# Distributed under the MIT License (See accompanying file /LICENSE )
+# configure variables
+set(EXAMPLE_APP_NAME "${PROJECT_NAME}_example")
 
-# CMake build : main application
+# configure directories
+set(EXAMPLE_PATH "${PROJECT_SOURCE_DIR}/example")
 
-#configure variables
-set (APP_NAME "${PROJECT_NAME}App")
+# set sources
+file(GLOB APP_SOURCE_FILES "${EXAMPLE_PATH}/*.cpp")
 
-#configure directories
-set (APP_MODULE_PATH "${PROJECT_SOURCE_DIR}/example")
-set (APP_SRC_PATH  "${APP_MODULE_PATH}/src" )
+# set target executable
+add_executable(${EXAMPLE_APP_NAME} ${APP_SOURCE_FILES})
 
-#set includes
-include_directories (${LIBRARY_INCLUDE_PATH} ${SPDLOG_INCLUDE_PATH})
-
-#set sources
-file (GLOB APP_SOURCE_FILES "${APP_SRC_PATH}/*.cpp")
-
-#set target executable
-add_executable (${APP_NAME} ${APP_SOURCE_FILES})
-
-#add the library
-target_link_libraries (${APP_NAME} ${LIB_NAME} Threads::Threads)
-
-#test
-enable_testing ()
-add_subdirectory (test)
+# add the library and nessesary packages
+target_link_libraries(${EXAMPLE_APP_NAME} ${LIB_NAME} Threads::Threads)
