@@ -1,7 +1,3 @@
-# Distributed under the MIT License (See accompanying file /LICENSE )
-
-# CMake build : global project
-
 cmake_minimum_required(VERSION 3.3)
 
 project(oqs)
@@ -28,7 +24,7 @@ set(LIB_TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 include_directories (${LIB_INCLUDE_PATH} ${SPDLOG_INCLUDE_PATH} ${EIGEN_INCLUDE_PATH} ${CATCH_INCLUDE_PATH})
 
 #set sources
-file (GLOB_RECURSE LIB_HEADER_FILES "${LIBRARY_INCLUDE_PATH}/*.h")
+file (GLOB_RECURSE LIB_HEADER_FILES "${LIB_INCLUDE_PATH}/*.h")
 
 #set library
 add_library (${LIB_NAME} INTERFACE)
@@ -40,10 +36,10 @@ target_include_directories(
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
-#add_custom_target(${LIB_NAME}_IDE SOURCES ${LIB_HEADER_FILES})
+add_custom_target(${LIB_NAME}_IDE SOURCES ${LIB_HEADER_FILES})
 
 enable_testing()
 
 add_subdirectory(test)
 
-add_subdirectory(app)
+add_subdirectory(example)
