@@ -1,6 +1,3 @@
-/*
- *  Distributed under the MIT License (See accompanying file /LICENSE )
- */
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 
