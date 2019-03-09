@@ -1,5 +1,5 @@
 #include <catch.hpp>
-#include "trajectories/propagation/step.h"
+#include <oqs/trajectories/propagation/step.h>
 
 namespace oqs
 {

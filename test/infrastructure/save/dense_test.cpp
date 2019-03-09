@@ -1,5 +1,5 @@
 #include <catch.hpp>
-#include "infrastructure/save/dense.h"
+#include <oqs/infrastructure/save/dense.h>
 
 namespace oqs
 {
@@ -21,8 +21,7 @@ namespace oqs
 			const std::string file_name = "matrix_cd.txt";
 			save_dense(file_name, A);
 
-			//REQUIRE(std::experimental::filesystem::exists(file_name));
-			REQUIRE(1);
+			REQUIRE(std::filesystem::exists(file_name));
 
 			std::remove(file_name.c_str());
 		}
