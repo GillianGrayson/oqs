@@ -2,10 +2,10 @@
 set (TEST_APP_NAME "${LIB_NAME}_test")
 
 # configure directories
-set(LIB_TEST_PATH "${PROJECT_SOURCE_DIR}/test")
+set(TEST_PATH "${PROJECT_SOURCE_DIR}/test")
 
 # set test sources
-file(GLOB_RECURSE TEST_SOURCE_FILES "${LIB_TEST_PATH}/*.cpp")
+file(GLOB_RECURSE TEST_SOURCE_FILES "${TEST_PATH}/*.cpp")
 
 # set target executable
 add_executable (${TEST_APP_NAME} ${TEST_SOURCE_FILES})

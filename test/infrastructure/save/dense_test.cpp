@@ -1,5 +1,5 @@
 #include <catch.hpp>
-#include "infrastructure/save/dense.h"
+#include <oqs/infrastructure/save/dense.h>
 
 namespace oqs
 {
