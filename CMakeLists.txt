@@ -2,31 +2,48 @@
 
 # CMake build : global project
 
-cmake_minimum_required (VERSION 3.3)
+cmake_minimum_required(VERSION 3.3)
 
-project (OQS)
+project(oqs)
 
-set_property (GLOBAL PROPERTY USE_FOLDERS ON)
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-set (CMAKE_CXX_STANDARD 14)
-set (CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set (THREADS_PREFER_PTHREAD_FLAG ON)
-find_package (Threads REQUIRED)
 
-add_subdirectory (third_party EXCLUDE_FROM_ALL)
-add_subdirectory (lib)
-add_subdirectory (app)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+
+add_subdirectory(third_party EXCLUDE_FROM_ALL)
+
+#configure variables
+set(LIB_NAME "${PROJECT_NAME}")
+
+#configure directories
+set(LIB_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/include")
+set(LIB_TEST_PATH "${PROJECT_SOURCE_DIR}/test")
+
+#set includes
+include_directories (${LIB_INCLUDE_PATH} ${SPDLOG_INCLUDE_PATH} ${EIGEN_INCLUDE_PATH} ${CATCH_INCLUDE_PATH})
+
+#set sources
+file (GLOB_RECURSE LIB_HEADER_FILES "${LIBRARY_INCLUDE_PATH}/*.h")
+
+#set library
+add_library (${LIB_NAME} INTERFACE)
+
+target_include_directories(
+    ${LIB_NAME}
+    INTERFACE
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+    "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
+
+#add_custom_target(${LIB_NAME}_IDE SOURCES ${LIB_HEADER_FILES})
 
 enable_testing()
 
-option (CODE_COVERAGE "Enable coverage reporting" OFF)
-if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-  # Add required flags (GCC & LLVM/Clang)
-  target_compile_options(${LIB_NAME} INTERFACE
-    -O0        # no optimization
-    -g         # generate debug info
-    --coverage # sets all required flags
-  )
-  target_link_libraries(${LIB_NAME} INTERFACE --coverage)
-endif()
+add_subdirectory(test)
+
+add_subdirectory(app)

@@ -17,7 +17,10 @@ namespace oqs
 	  * \tparam x: vector of wave function's previous state.
 	  * \tparam y: vector of wave function's next state.
 	*/
-	void prop_step(Eigen::VectorXcd& y, const Eigen::MatrixXcd& A, const Eigen::VectorXcd& x);
+	void prop_step(Eigen::VectorXcd& y, const Eigen::MatrixXcd& A, const Eigen::VectorXcd& x)
+	{
+		y.noalias() = A * x;
+	}
 } // namespace oqs
 
 #endif // TRAJ_PROP_STEP_HPP
