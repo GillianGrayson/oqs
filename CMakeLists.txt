@@ -1,19 +1,14 @@
 # -------------------------------------------------------------------------
 # setup
 # -------------------------------------------------------------------------
-cmake_minimum_required(VERSION 3.3)
+cmake_minimum_required(VERSION 3.11)
 
 project(oqs)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-#set(CMAKE_CXX_STANDARD 17)
-#set(CMAKE_CXX_STANDARD_REQUIRED ON)
-if(MSVC)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")
-else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
-endif()
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # -------------------------------------------------------------------------
 # packages

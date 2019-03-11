@@ -5,7 +5,7 @@ namespace oqs
 {
 	namespace Test
 	{
-		TEST_CASE("Checking trajectories propagation step", "[trajectories propagation step]")
+		TEST_CASE("trajectories propagation step is correct", "[trajectories][propagation][step]")
 		{
 			Eigen::VectorXcd y_real(3);
 			y_real(0) = {207.0, -66.0};
