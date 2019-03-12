@@ -7,10 +7,11 @@
 #endif
 
 #include <Eigen/Dense>
+#include <spdlog/spdlog.h>
 #include <complex>
+#include <utility>
 #include <vector>
 #include <functional>
-#include <iostream>
 
 namespace oqs
 {
@@ -22,23 +23,37 @@ namespace oqs
 		bool is_driving;
 		std::vector<std::function<std::complex<double>(double)>> drivings;
 
+		/**
+		 * \brief Init data structure for hamiltonian part of quantum system.
+		 * 
+		 * \param num_segments:	Number of segments with different hamiltonians.
+		 * 
+		 * \param hamiltonians:	Vector of hamiltonians matrices. 
+		 *						Size must be equal to num_segments.
+		 *								
+		 * \param segments_periods:	Vector of time durations of each segment.
+		 *							Size must be equal to num_segments.
+		 *								
+		 * \param is_driving: The system has a driving?
+		 * 
+		 * \param drivings:	Vector of driving functions.
+		 *					Size must be equal to num_segments.
+		 */
 		HamiltonianPart(
-			int num_segments_,
-			std::vector<Eigen::MatrixXcd> hamiltonians_,
-			std::vector<double> segments_periods_,
-			bool is_driving_,
-			std::vector<std::function<std::complex<double>(double)>> drivings_
-		) : num_segments{ num_segments_ },
-			hamiltonians{ hamiltonians_ },
-			segments_periods{ segments_periods_ },
-			is_driving{ is_driving_ },
-			drivings{ drivings_ }
+			int num_segments,
+			std::vector<Eigen::MatrixXcd> hamiltonians,
+			std::vector<double> segments_periods,
+			bool is_driving,
+			std::vector<std::function<std::complex<double> (double)>> drivings
+		) : num_segments{num_segments},
+		    hamiltonians{std::move(hamiltonians)},
+		    segments_periods{std::move(segments_periods)},
+		    is_driving{is_driving},
+		    drivings{std::move(drivings)}
 		{
-			std::cout << "HIIIIIIIIIIIIIIIIIIIII" << std::endl;
+			spdlog::get("console")->info("HI");
 		}
-
 	};
-
 } // namespace oqs
 
 #endif // SYS_HAMILTONIAN_HPP
