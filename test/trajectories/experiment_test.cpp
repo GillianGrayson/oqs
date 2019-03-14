@@ -1,5 +1,5 @@
 #include <catch.hpp>
-#include <oqs/system/experiment.h>
+#include <oqs/trajectories/experiment.h>
 
 namespace oqs
 {
