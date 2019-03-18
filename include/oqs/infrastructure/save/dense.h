@@ -9,8 +9,14 @@
 #include <Eigen/Dense>
 #include <complex>
 #include <string>
-#include <filesystem>
 #include <fstream>
+#if STD_FS_IS_EXPERIMENTAL
+#include <experimental/filesystem>
+namespace filesystem = std::experimental::filesystem;
+#else
+#include <filesystem>
+namespace filesystem = std::filesystem;
+#endif
 
 namespace oqs
 {

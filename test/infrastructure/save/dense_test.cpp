@@ -23,7 +23,7 @@ namespace oqs
 
 				oqs::save_dense(file_name, A);
 
-				REQUIRE(std::filesystem::exists(file_name));
+				REQUIRE(filesystem::exists(file_name));
 			}
 			SECTION("saving of double matrix") {
 				Eigen::MatrixXd A(2, 2);
@@ -34,7 +34,7 @@ namespace oqs
 
 				oqs::save_dense(file_name, A);
 
-				REQUIRE(std::filesystem::exists(file_name));
+				REQUIRE(filesystem::exists(file_name));
 			}
 			SECTION("saving of complex double vector") {
 				Eigen::VectorXcd A(3);
@@ -44,7 +44,7 @@ namespace oqs
 
 				oqs::save_dense(file_name, A);
 
-				REQUIRE(std::filesystem::exists(file_name));
+				REQUIRE(filesystem::exists(file_name));
 			}
 			SECTION("saving of  double vector") {
 				Eigen::VectorXd A(2);
@@ -53,7 +53,7 @@ namespace oqs
 
 				oqs::save_dense(file_name, A);
 
-				REQUIRE(std::filesystem::exists(file_name));
+				REQUIRE(filesystem::exists(file_name));
 			}
 
 			std::remove(file_name.c_str());
