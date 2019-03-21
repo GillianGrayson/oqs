@@ -14,14 +14,16 @@ matrix:
     # Clang on OSX
     ##########################################################################
 
-    - env: COMPILER=clang++ BUILD_TYPE=Debug CODE_COVERAGE=FALSE
+    - env: STDFLAGS="-std=c++11 -std=c++14 -std=c++17" BUILD_TYPE=Debug CODE_COVERAGE=FALSE
+      compiler: clang
       os: osx
-      osx_image: xcode9.1
+      osx_image: xcode10.1
       compiler: clang
 
-    - env: COMPILER=clang++ BUILD_TYPE=Release CODE_COVERAGE=FALSE
+    - env: STDFLAGS="-std=c++11 -std=c++14 -std=c++17" BUILD_TYPE=Release CODE_COVERAGE=FALSE
+      compiler: clang
       os: osx
-      osx_image: xcode9.1
+      osx_image: xcode10.1
       compiler: clang
 
     ##########################################################################
@@ -29,15 +31,14 @@ matrix:
     ##########################################################################
 
     # Clang 7.0
-    - env: COMPILER=clang++-7 BUILD_TYPE=Debug CODE_COVERAGE=FALSE
+    - env: VER=7 STDFLAGS="-std=c++11 -std=c++14 -std=c++17" COMPILER=clang++-7 BUILD_TYPE=Debug CODE_COVERAGE=FALSE
       addons: &clang70
         apt:
           packages:
             - clang-7
-            - g++-7
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-trusty-7
+            - llvm-toolchain-xenial-7
 
     - env: COMPILER=clang++-7 BUILD_TYPE=Release CODE_COVERAGE=FALSE
       addons: *clang70
@@ -46,17 +47,17 @@ matrix:
     # GCC on Linux
     ##########################################################################
 
-    - env: COMPILER=g++-7 BUILD_TYPE=Debug CODE_COVERAGE=TRUE
-      addons: &gcc7
+    - env: VER=8 STDFLAGS="-std=c++11 -std=c++14 -std=c++17" COMPILER=g++-8 BUILD_TYPE=Debug CODE_COVERAGE=TRUE
+      addons: &gcc8
         apt:
           packages:
             - lcov
-            - g++-7
+            - g++-8
           sources:
             - ubuntu-toolchain-r-test
 
-    - env: COMPILER=g++-7 BUILD_TYPE=Release CODE_COVERAGE=FALSE
-      addons: *gcc7
+    - env: COMPILER=g++-8 BUILD_TYPE=Release CODE_COVERAGE=FALSE
+      addons: *gcc8
 
 install:
 
