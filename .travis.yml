@@ -14,7 +14,7 @@ matrix:
     # GCC on Linux
     ##########################################################################
 
-    - env: STDFLAGS="-std=c++17 -lstdc++fs" COMPILER=g++-8 BUILD_TYPE=Debug CODE_COVERAGE=TRUE
+    - env: STDFLAGS="-std=c++17" COMPILER=g++-8 BUILD_TYPE=Debug CODE_COVERAGE=TRUE
       addons: &gcc8
         apt:
           packages:
@@ -23,7 +23,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
 
-    - env: STDFLAGS="-std=c++17 -lstdc++fs" COMPILER=g++-8 BUILD_TYPE=Release CODE_COVERAGE=FALSE
+    - env: STDFLAGS="-std=c++17" COMPILER=g++-8 BUILD_TYPE=Release CODE_COVERAGE=FALSE
       addons: *gcc8
 
 install:
