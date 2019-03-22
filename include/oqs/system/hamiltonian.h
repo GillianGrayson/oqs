@@ -64,7 +64,7 @@ namespace oqs
 			{	
 				std::string msg = "Driving initialization when driving is off.";
 				spdlog::get("console")->error(msg.c_str());
-				throw std::exception(msg.c_str());
+				throw std::exception();
 			}
 		}
 	};
