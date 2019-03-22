@@ -12,3 +12,8 @@ add_executable(${EXAMPLE_APP_NAME} ${APP_SOURCE_FILES})
 
 # add the library and nessesary packages
 target_link_libraries(${EXAMPLE_APP_NAME} ${LIB_NAME} Threads::Threads)
+
+# filesystem support on gcc-8
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+	target_link_libraries(${EXAMPLE_APP_NAME} stdc++fs)
+endif()
