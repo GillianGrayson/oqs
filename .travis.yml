@@ -14,17 +14,17 @@ matrix:
     # GCC on Linux
     ##########################################################################
 
-    - env: STDFLAGS="-std=c++17" COMPILER=g++-9 BUILD_TYPE=Debug CODE_COVERAGE=TRUE
-      addons: &gcc9
+    - env: STDFLAGS="-std=c++17" COMPILER=g++-8 BUILD_TYPE=Debug CODE_COVERAGE=TRUE
+      addons: &gcc8
         apt:
           packages:
             - lcov
-            - g++-9
+            - g++-8
           sources:
             - ubuntu-toolchain-r-test
 
-    - env: STDFLAGS="-std=c++17" COMPILER=g++-9 BUILD_TYPE=Release CODE_COVERAGE=FALSE
-      addons: *gcc9
+    - env: STDFLAGS="-std=c++17" COMPILER=g++-8 BUILD_TYPE=Release CODE_COVERAGE=FALSE
+      addons: *gcc8
 
 install:
 
