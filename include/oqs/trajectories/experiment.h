@@ -53,14 +53,17 @@ namespace oqs
 		/**********************************************************************************************/ /**
 		 * \brief	Init quantum trajectories.
 		 *
+		 * \param	hamiltonian_part_ 	The hamiltonian part.
+		 * \param	dissipative_part_ 	The dissipative part.
 		 * \param	experiment_type_  	Type of the experiment.
 		 * \param	num_trajectories_ 	Number of trajectories.
-		 * \param	num_trans_periods_	Number of translition periods.
+		 * \param	num_trans_periods_	Number of translation periods.
 		 * \param	num_obser_periods_	Number of observable periods.
-		 * \param	is_deep_		  	Possibility to dumps inside the period.
-		 * 								True if experiment is deep, false if not.
 		 * \param	num_dumps_		  	Number of dumps.
+		 * \param	is_deep_		  	Possibility to dumps inside the period. True if experiment is
+		 * 								deep, false if not.
 		 **************************************************************************************************/
+
 		Experiment(
 			std::unique_ptr<oqs::HamiltonianPart> hamiltonian_part_,
 			std::unique_ptr<oqs::DissipativePart> dissipative_part_,

@@ -33,8 +33,17 @@ set (EIGEN_MODULE_PATH "${THIRD_PARTY_MODULE_PATH}/eigen-git-mirror")
 set (EIGEN_INCLUDE_PATH "${EIGEN_MODULE_PATH}")
 
 # -------------------------------------------------------------------------
+# inih
+# -------------------------------------------------------------------------
+
+# configure directories
+set (INIH_MODULE_PATH "${THIRD_PARTY_MODULE_PATH}/inih")
+set (INIH_INCLUDE_PATH "${INIH_MODULE_PATH}")
+
+# -------------------------------------------------------------------------
 # export vars
 # -------------------------------------------------------------------------
 set (SPDLOG_INCLUDE_PATH  ${SPDLOG_INCLUDE_PATH} PARENT_SCOPE)
 set (CATCH_INCLUDE_PATH  ${CATCH_INCLUDE_PATH} PARENT_SCOPE)
 set (EIGEN_INCLUDE_PATH  ${EIGEN_INCLUDE_PATH} PARENT_SCOPE)
+set (INIH_INCLUDE_PATH  ${INIH_INCLUDE_PATH} PARENT_SCOPE)

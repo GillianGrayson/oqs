@@ -1,4 +1,4 @@
-#include <oqs/system/hamiltonian.h>
+#include <oqs/system/hamiltonian/hamiltonian.h>
 
 int main(int argc, char* argv[])
 {

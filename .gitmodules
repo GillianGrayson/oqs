@@ -7,3 +7,6 @@
 [submodule "third_party/eigen-git-mirror"]
 	path = third_party/eigen-git-mirror
 	url = https://github.com/eigenteam/eigen-git-mirror
+[submodule "third_party/inih"]
+	path = third_party/inih
+	url = https://github.com/jtilly/inih
