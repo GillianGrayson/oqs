@@ -25,6 +25,13 @@ namespace oqs
 		std::vector<std::function<std::complex<double>(double)>> drivings;
 
 		/**********************************************************************************************/ /**
+		 * \brief	Default constructor
+		 **************************************************************************************************/
+		HamiltonianPart(): num_segments(1), is_driving(false)
+		{
+		}
+
+		/**********************************************************************************************/ /**
 		 * \brief	Init data structure for hamiltonian part of quantum system.
 		 *
 		 * \param	num_segments_		Number of segments with different hamiltonians.

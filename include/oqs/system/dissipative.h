@@ -18,6 +18,13 @@ namespace oqs
 		std::vector<Eigen::MatrixXcd> dissipators;
 
 		/**********************************************************************************************/ /**
+		 * \brief	Default constructor
+		 **************************************************************************************************/
+		DissipativePart(): num_dissipators(1)
+		{
+		}
+
+		/**********************************************************************************************/ /**
 		 * \brief	Init data structure for dissipative part of quantum system.
 		 *
 		 * \param	num_dissipators_	Number of dissipators in model.

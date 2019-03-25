@@ -13,6 +13,9 @@
 #include <vector>
 #include <functional>
 #include <stdlib.h>
+#include <memory>
+#include <oqs/system/hamiltonian.h>
+#include <oqs/system/dissipative.h>
 
 namespace oqs
 {
@@ -36,12 +39,14 @@ namespace oqs
 
 	struct Experiment
 	{
+		std::unique_ptr<oqs::HamiltonianPart> hamiltonian_part;
+		std::unique_ptr<oqs::DissipativePart> dissipative_part;
 		ExperimentType experiment_type;
 		int num_trajectories;
 		int num_trans_periods;
 		int num_obser_periods;
-		bool is_deep;
 		int num_dumps;
+		bool is_deep;
 
 		int num_deep_steps;
 
@@ -57,6 +62,8 @@ namespace oqs
 		 * \param	num_dumps_		  	Number of dumps.
 		 **************************************************************************************************/
 		Experiment(
+			std::unique_ptr<oqs::HamiltonianPart> hamiltonian_part_,
+			std::unique_ptr<oqs::DissipativePart> dissipative_part_,
 			ExperimentType experiment_type_,
 			int num_trajectories_,
 			int num_trans_periods_,
@@ -68,9 +75,12 @@ namespace oqs
 		    num_trajectories{num_trajectories_},
 		    num_trans_periods{num_trans_periods_},
 		    num_obser_periods{num_obser_periods_},
-		    is_deep{is_deep_},
-		    num_dumps{num_dumps_}
+		    num_dumps{num_dumps_},
+		    is_deep{is_deep_}
 		{
+			hamiltonian_part = std::move(hamiltonian_part_);
+			dissipative_part = std::move(dissipative_part_);
+
 			if (!is_deep)
 			{
 				check_num_dumps(num_obser_periods, num_dumps);
@@ -90,7 +100,7 @@ namespace oqs
 		{
 			if (is_deep)
 			{
-				num_deep_steps = num_deep_steps_;
+				num_deep_steps = this->hamiltonian_part.get()->num_segments * num_deep_steps_;
 				check_num_dumps(num_deep_steps * num_obser_periods, num_dumps);
 				spdlog::get("console")->info("Deep details of the experiment are initialized.");
 			}
