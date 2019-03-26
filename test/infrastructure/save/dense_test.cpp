@@ -7,51 +7,60 @@ namespace oqs
 	{
 		TEST_CASE("saving of denses creates file", "[infrastructure][save][dense]")
 		{
+			int *array = new int[100];
+			delete[] array;
+			// Dereferencing 'array' after it is deallocated / released
+			array[0] = 0;
+
 			const std::string file_name = "dense.txt";
 
-			SECTION("saving of complex double matrix") {
+			SECTION("saving of complex double matrix")
+			{
 				Eigen::MatrixXcd A(3, 3);
-				A(0, 0) = { 2.0, 5.0 };
-				A(0, 1) = { -10.0, -6.0 };
-				A(0, 2) = { -2.0, 10.0 };
-				A(1, 0) = { -5.0, -8.0 };
-				A(1, 1) = { -3.0, -8.0 };
-				A(1, 2) = { -7.0, 7.0 };
-				A(2, 0) = { -4.0, 7.0 };
-				A(2, 1) = { -8.0, 3.0 };
-				A(2, 2) = { 7.0, 3.0 };
+				A(0, 0) = {2.0, 5.0};
+				A(0, 1) = {-10.0, -6.0};
+				A(0, 2) = {-2.0, 10.0};
+				A(1, 0) = {-5.0, -8.0};
+				A(1, 1) = {-3.0, -8.0};
+				A(1, 2) = {-7.0, 7.0};
+				A(2, 0) = {-4.0, 7.0};
+				A(2, 1) = {-8.0, 3.0};
+				A(2, 2) = {7.0, 3.0};
 
-				oqs::save_dense(file_name, A);
+				save_dense(file_name, A);
 
 				REQUIRE(std::filesystem::exists(file_name));
 			}
-			SECTION("saving of double matrix") {
+			SECTION("saving of double matrix")
+			{
 				Eigen::MatrixXd A(2, 2);
 				A(0, 0) = 2.0;
 				A(0, 1) = -10.0;
 				A(1, 0) = -5.0;
 				A(1, 1) = -3.0;
 
-				oqs::save_dense(file_name, A);
+				save_dense(file_name, A);
 
 				REQUIRE(std::filesystem::exists(file_name));
 			}
-			SECTION("saving of complex double vector") {
+			SECTION("saving of complex double vector")
+			{
 				Eigen::VectorXcd A(3);
-				A(0) = { 2.0, 5.0 };
-				A(1) = { -10.0, -6.0 };
-				A(2) = { -2.0, 10.0 };
+				A(0) = {2.0, 5.0};
+				A(1) = {-10.0, -6.0};
+				A(2) = {-2.0, 10.0};
 
-				oqs::save_dense(file_name, A);
+				save_dense(file_name, A);
 
 				REQUIRE(std::filesystem::exists(file_name));
 			}
-			SECTION("saving of  double vector") {
+			SECTION("saving of  double vector")
+			{
 				Eigen::VectorXd A(2);
 				A(0) = 2.0;
 				A(1) = -10.0;
 
-				oqs::save_dense(file_name, A);
+				save_dense(file_name, A);
 
 				REQUIRE(std::filesystem::exists(file_name));
 			}
