@@ -1,5 +1,5 @@
 language: cpp
-sudo: false
+sudo: required
 notifications:
   email: false
 
@@ -53,6 +53,9 @@ install:
       brew install cmake || brew upgrade cmake
     fi
   - cmake --version
+  - wget http://downloads.sourceforge.net/ltp/lcov-1.14.tar.gz
+  - tar xf lcov-1.14.tar.gz
+  - sudo make -C lcov-1.14/ install
 
 
 before_script:
@@ -67,7 +70,7 @@ script:
 after_success:
 # Create lcov report
 - lcov --gcov-tool /usr/bin/gcov-8 --capture --directory . --output-file coverage.info
-- lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter system-files
-- lcov --list coverage.info # debug info
+- lcov --gcov-tool /usr/bin/gcov-8 --remove coverage.info '/usr/*' --output-file coverage.info # filter system-files
+- lcov --gcov-tool /usr/bin/gcov-8 --list coverage.info # debug info
 # Uploading report to CodeCov
 - bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
