@@ -7,10 +7,6 @@ namespace oqs
 	{
 		TEST_CASE("saving of denses creates file", "[infrastructure][save][dense]")
 		{
-			int *array = new int[100];
-			delete[] array;
-			array[0] = 0;
-
 			const std::string file_name = "dense.txt";
 
 			SECTION("saving of complex double matrix")
