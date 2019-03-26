@@ -5,7 +5,7 @@ namespace oqs
 {
 	namespace Test
 	{
-		TEST_CASE("Checking trajectories propagation step", "[trajectories propagation step]")
+		TEST_CASE("trajectories propagation step is correct", "[trajectories][propagation][step]")
 		{
 			Eigen::VectorXcd y_real(3);
 			y_real(0) = {207.0, -66.0};
@@ -29,7 +29,7 @@ namespace oqs
 			x(2) = {-1.0, -10.0};
 
 			Eigen::VectorXcd y_test(3);
-			prop_step(y_test, A, x);
+			oqs::prop_step(y_test, A, x);
 
 			REQUIRE(y_real.isApprox(y_test));
 		}

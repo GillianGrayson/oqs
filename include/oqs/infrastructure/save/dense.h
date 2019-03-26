@@ -9,18 +9,19 @@
 #include <Eigen/Dense>
 #include <complex>
 #include <string>
-#include <filesystem>
 #include <fstream>
+#include <filesystem>
 
 namespace oqs
 {
-	/** \brief Save dense (matrix or vector) to file
-	  *
-	  * \param file_name: name of file.
-	  * \param dense: dense for saving.
-	*/
+	/**
+	 * \brief Save dense (matrix or vector) to file
+	 * \tparam Derived: 
+	 * \param file_name: name of file.
+	 * \param dense: dense for saving.
+	 */
 	template <typename Derived>
-	void save_dense(std::string file_name, const Eigen::DenseBase<Derived>& dense)
+	void save_dense(const std::string& file_name, const Eigen::DenseBase<Derived>& dense)
 	{
 		const Eigen::IOFormat common_fmt(Eigen::FullPrecision, 0, "", "\n", "", "", "", "");
 		std::ofstream file(file_name.c_str());

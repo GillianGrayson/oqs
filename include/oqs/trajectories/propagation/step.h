@@ -11,12 +11,12 @@
 
 namespace oqs
 {
-	/** \brief Performs propagation step: y=A*x
-	  *
-	  * \tparam A: propagation matrix of non-hermitian hamiltonian.
-	  * \tparam x: vector of wave function's previous state.
-	  * \tparam y: vector of wave function's next state.
-	*/
+	/**
+	 * \brief Performs propagation step: y=A*x
+	 * \param y vector of wave function's previous state.
+	 * \param A propagation matrix of non-hermitian hamiltonian.
+	 * \param x vector of wave function's previous state.
+	 */
 	void prop_step(Eigen::VectorXcd& y, const Eigen::MatrixXcd& A, const Eigen::VectorXcd& x)
 	{
 		y.noalias() = A * x;
