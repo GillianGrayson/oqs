@@ -67,3 +67,17 @@ add_subdirectory(example)
 # -------------------------------------------------------------------------
 message("CMAKE_CURRENT_BINARY_DIR: " ${CMAKE_CURRENT_BINARY_DIR})
 configure_file(${PROJECT_SOURCE_DIR}/oqs.ini ${CMAKE_CURRENT_BINARY_DIR}/oqs.ini COPYONLY)
+
+# -------------------------------------------------------------------------
+# code coverage
+# -------------------------------------------------------------------------
+option (CODE_COVERAGE "Enable coverage reporting." OFF)
+if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+	# Add required flags (GCC & LLVM/Clang)
+	target_compile_options(${LIB_NAME} INTERFACE
+		-O0        # no optimization
+		-g         # generate debug info
+		--coverage # sets all required flags
+	)
+	target_link_libraries(${LIB_NAME} INTERFACE --coverage)
+endif()
