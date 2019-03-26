@@ -9,7 +9,6 @@ namespace oqs
 		{
 			int *array = new int[100];
 			delete[] array;
-			// Dereferencing 'array' after it is deallocated / released
 			array[0] = 0;
 
 			const std::string file_name = "dense.txt";
