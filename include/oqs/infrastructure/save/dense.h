@@ -7,7 +7,6 @@
 #endif
 
 #include <Eigen/Dense>
-#include <complex>
 #include <string>
 #include <fstream>
 #include <filesystem>

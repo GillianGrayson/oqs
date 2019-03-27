@@ -5,6 +5,6 @@
 int main(int argc, char* argv[])
 {
 	auto console = spdlog::stdout_color_mt("console");
-	auto result = Catch::Session().run(argc, argv);
+	Catch::Session().run(argc, argv);
 	return 0;
 }

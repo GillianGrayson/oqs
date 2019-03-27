@@ -1,7 +1,6 @@
 #include <catch.hpp>
 #include <oqs/system/hamiltonian/generators/mock.h>
-#define _USE_MATH_DEFINES
-#include <math.h>
+#include <cmath>
 
 namespace oqs
 {
@@ -11,13 +10,13 @@ namespace oqs
 		{
 			std::unique_ptr<HamiltonianPart> p_hamiltonian_part = std::make_unique<HamiltonianPartMock>();
 
-			auto hamiltonians = p_hamiltonian_part.get()->get_hamiltonians();
-			auto segments_periods = p_hamiltonian_part.get()->get_segments_periods();
-			auto drivings = p_hamiltonian_part.get()->get_drivings();
+			auto hamiltonians = p_hamiltonian_part->get_hamiltonians();
+			auto segments_periods = p_hamiltonian_part->get_segments_periods();
+			auto drivings = p_hamiltonian_part->get_drivings();
 
 			SECTION("checking number of segments")
 			{
-				REQUIRE(p_hamiltonian_part.get()->get_num_segments() == 1);
+				REQUIRE(p_hamiltonian_part->get_num_segments() == 1);
 			}
 			SECTION("checking hamiltonian matrices")
 			{
@@ -32,13 +31,13 @@ namespace oqs
 			}
 			SECTION("checking is driving")
 			{
-				REQUIRE_FALSE(p_hamiltonian_part.get()->get_is_driving());
+				REQUIRE_FALSE(p_hamiltonian_part->get_is_driving());
 			}
 			SECTION("checking segments periods")
 			{
 				REQUIRE(drivings.size() == 1);
-				auto driving = drivings[0](M_PI);
-				REQUIRE(1);
+				auto driving = drivings[0](1.0).real();
+				REQUIRE(std::sin(1.0) == Approx(driving));
 			}
 			SECTION("checking sizes")
 			{

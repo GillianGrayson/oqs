@@ -32,20 +32,20 @@ namespace oqs
 
 		std::vector<double> get_segments_periods() override
 		{
-			std::vector<double> segments_periods{ 1.0 };
+			std::vector<double> segments_periods{1.0};
 			return segments_periods;
 		}
 
 		bool get_is_driving() override
 		{
-			bool is_driving = false;
+			const bool is_driving = false;
 			return is_driving;
 		}
 
 		std::vector<std::function<std::complex<double>(double)>> get_drivings() override
 		{
-			auto driving_sin = [](double time) { return std::complex<double>(sin(time), 0.0); };
-			std::vector<std::function<std::complex<double>(double)>> drivings{ driving_sin };
+			const auto driving_sin = [](double time) { return std::complex<double>(sin(time), 0.0); };
+			std::vector<std::function<std::complex<double>(double)>> drivings{driving_sin};
 			return drivings;
 		}
 	};

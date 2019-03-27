@@ -7,7 +7,6 @@
 #endif
 
 #include <Eigen/Dense>
-#include <complex>
 
 namespace oqs
 {
@@ -17,7 +16,7 @@ namespace oqs
 	 * \param A propagation matrix of non-hermitian hamiltonian.
 	 * \param x vector of wave function's previous state.
 	 */
-	void prop_step(Eigen::VectorXcd& y, const Eigen::MatrixXcd& A, const Eigen::VectorXcd& x)
+	inline void prop_step(Eigen::VectorXcd& y, const Eigen::MatrixXcd& A, const Eigen::VectorXcd& x)
 	{
 		y.noalias() = A * x;
 	}

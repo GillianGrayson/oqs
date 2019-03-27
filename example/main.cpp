@@ -1,4 +1,4 @@
-#include <oqs/system/hamiltonian/hamiltonian.h>
+#include <spdlog/spdlog.h>
 
 int main(int argc, char* argv[])
 {
