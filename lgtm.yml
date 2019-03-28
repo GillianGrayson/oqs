@@ -1,0 +1,19 @@
+path_classifiers:
+  test:
+    - "**/tests/*"
+extraction:
+  cpp:
+    prepare:
+      packages:
+        - gcc-8
+        - g++-8
+    after_prepare:
+      - export CC=gcc-8
+      - export CXX=g++-8
+    configure:
+      command:
+        - cmake -H. -BBuild -DCMAKE_BUILD_TYPE=Release -Wdev -DCODE_COVERAGE=FALSE
+    index:
+      build_command:
+        - cd Build
+        - make -j 2
