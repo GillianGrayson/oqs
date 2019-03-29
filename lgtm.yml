@@ -1,6 +1,6 @@
 path_classifiers:
-  test:
-    - "**/tests/*"
+  third_party:
+    - exclude: third_party
 extraction:
   cpp:
     prepare:
