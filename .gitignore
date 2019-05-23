@@ -3,3 +3,5 @@ Win32
 .idea/
 cmake-build-*/
 .vs/
+
+Testing/
