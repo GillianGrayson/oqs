@@ -12,10 +12,15 @@
 
 namespace oqs
 {
+	/**********************************************************************************************/ /**
+	 * \struct	DissipativePart
+	 *
+	 * \brief	Abstract base class for dissipative part generation.
+	 **************************************************************************************************/
 	struct DissipativePart
 	{
-		int num_dissipators;
-		std::vector<Eigen::MatrixXcd> dissipators;
+		int num_dissipators; /**< Number of dissipators */
+		std::vector<Eigen::MatrixXcd> dissipators; /**< Dissipation matrices */
 
 		/**********************************************************************************************/ /**
 		 * \brief	Default constructor

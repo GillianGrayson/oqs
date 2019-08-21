@@ -1,4 +1,16 @@
 # -------------------------------------------------------------------------
+# print_all_variables macro
+# -------------------------------------------------------------------------
+macro(print_all_variables)
+    message(STATUS "print_all_variables------------------------------------------{")
+    get_cmake_property(_variableNames VARIABLES)
+    foreach (_variableName ${_variableNames})
+        message(STATUS "${_variableName}=${${_variableName}}")
+    endforeach()
+    message(STATUS "print_all_variables------------------------------------------}")
+endmacro()
+
+# -------------------------------------------------------------------------
 # setup
 # -------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.10)
@@ -21,6 +33,11 @@ find_package(Threads REQUIRED)
 # -------------------------------------------------------------------------
 add_subdirectory(third_party EXCLUDE_FROM_ALL)
 include_directories (${SPDLOG_INCLUDE_PATH} ${EIGEN_INCLUDE_PATH} ${CATCH_INCLUDE_PATH} ${INIH_INCLUDE_PATH})
+
+# -------------------------------------------------------------------------
+# Add the cmake folder so the FindSphinx module is found
+# -------------------------------------------------------------------------
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 # -------------------------------------------------------------------------
 # library
@@ -81,3 +98,9 @@ if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 	)
 	target_link_libraries(${LIB_NAME} INTERFACE --coverage)
 endif()
+
+# -------------------------------------------------------------------------
+# docs
+# -------------------------------------------------------------------------
+add_subdirectory(docs)
+
