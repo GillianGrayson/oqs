@@ -5,3 +5,7 @@ cmake-build-*/
 .vs/
 
 Testing/
+
+docs/html/
+
+docs/latex/

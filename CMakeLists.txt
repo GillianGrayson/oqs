@@ -1,4 +1,17 @@
 # -------------------------------------------------------------------------
+# print_all_variables macro
+# -------------------------------------------------------------------------
+macro(print_all_variables)
+    message(STATUS "print_all_variables------------------------------------------{")
+    get_cmake_property(_variableNames VARIABLES)
+    foreach (_variableName ${_variableNames})
+        message(STATUS "${_variableName}=${${_variableName}}")
+    endforeach()
+    message(STATUS "print_all_variables------------------------------------------}")
+endmacro()
+
+
+# -------------------------------------------------------------------------
 # setup
 # -------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.10)
@@ -81,3 +94,8 @@ if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 	)
 	target_link_libraries(${LIB_NAME} INTERFACE --coverage)
 endif()
+
+# -------------------------------------------------------------------------
+# docs
+# -------------------------------------------------------------------------
+add_subdirectory(docs)

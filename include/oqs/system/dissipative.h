@@ -12,10 +12,13 @@
 
 namespace oqs
 {
+	/**
+	A fluffy feline
+	*/
 	struct DissipativePart
 	{
-		int num_dissipators;
-		std::vector<Eigen::MatrixXcd> dissipators;
+		int num_dissipators; /**< Number of dissipators */
+		std::vector<Eigen::MatrixXcd> dissipators; /**< Dissipation matrices */
 
 		/**********************************************************************************************/ /**
 		 * \brief	Default constructor
