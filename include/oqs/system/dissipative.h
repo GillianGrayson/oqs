@@ -12,9 +12,6 @@
 
 namespace oqs
 {
-	/**
-	A fluffy feline
-	*/
 	struct DissipativePart
 	{
 		int num_dissipators; /**< Number of dissipators */

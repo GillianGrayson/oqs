@@ -1,4 +1,5 @@
 find_package(Doxygen REQUIRED)
+find_package(Sphinx REQUIRED)
  
 # Find all the public headers
 file(GLOB_RECURSE LIB_PUBLIC_HEADERS "${LIB_INCLUDE_PATH}/oqs/system/dissipative.h")
@@ -20,5 +21,16 @@ add_custom_command(OUTPUT ${DOXYGEN_INDEX_FILE}
                    COMMENT "Generating docs")
  
 add_custom_target(Doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
+
+set(SPHINX_SOURCE ${CMAKE_CURRENT_SOURCE_DIR})
+set(SPHINX_BUILD ${CMAKE_CURRENT_BINARY_DIR}/docs/sphinx)
+
+add_custom_target(Sphinx ALL
+                  COMMAND
+                  ${SPHINX_EXECUTABLE} -b html
+				  -Dbreathe_projects.oqs=${DOXYGEN_OUTPUT_DIR}/xml
+                  ${SPHINX_SOURCE} ${SPHINX_BUILD}
+                  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+                  COMMENT "Generating documentation with Sphinx")
 
 print_all_variables()
