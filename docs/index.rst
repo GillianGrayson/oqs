@@ -22,4 +22,5 @@ Indices and tables
 Docs
 ====
 
-.. doxygenindex::
+.. doxygenstruct:: oqs::DissipativePart
+   :members:
