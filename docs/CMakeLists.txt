@@ -1,6 +1,8 @@
 find_package(Doxygen REQUIRED)
 find_package(Sphinx REQUIRED)
 
+print_all_variables()
+
 if(DOXYGEN_FOUND AND SPHINX_FOUND)
  
 	# Find all the public headers
@@ -59,5 +61,3 @@ if(DOXYGEN_FOUND AND SPHINX_FOUND)
 	DESTINATION ${CMAKE_INSTALL_DOCDIR})
 
 endif()
-
-print_all_variables()
