@@ -101,4 +101,9 @@ endif()
 # -------------------------------------------------------------------------
 # docs
 # -------------------------------------------------------------------------
-add_subdirectory(docs)
+option (DOCS_GENERATION "Enable documentation generation" ON)
+if (DOCS_GENERATION)
+	add_subdirectory(docs)
+endif()
+
+print_all_variables()

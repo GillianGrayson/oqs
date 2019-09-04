@@ -14,7 +14,7 @@ matrix:
     # GCC on Linux
     ##########################################################################
 
-    - env: STDFLAGS="-std=c++17" COMPILER=g++-8 BUILD_TYPE=Debug CODE_COVERAGE=TRUE
+    - env: STDFLAGS="-std=c++17" COMPILER=g++-8 BUILD_TYPE=Debug CODE_COVERAGE=TRUE DOCS_GENERATION=FALSE
       addons: &gcc8
         apt:
           packages:
@@ -23,7 +23,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
 
-    - env: STDFLAGS="-std=c++17" COMPILER=g++-8 BUILD_TYPE=Release CODE_COVERAGE=FALSE
+    - env: STDFLAGS="-std=c++17" COMPILER=g++-8 BUILD_TYPE=Release CODE_COVERAGE=FALSE DOCS_GENERATION=FALSE
       addons: *gcc8
 
 install:
@@ -60,7 +60,7 @@ install:
 
 before_script:
   - cd ${TRAVIS_BUILD_DIR}
-  - cmake -H. -BBuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev -DCODE_COVERAGE=${CODE_COVERAGE}
+  - cmake -H. -BBuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev -DCODE_COVERAGE=${CODE_COVERAGE} -DDOCS_GENERATION=${DOCS_GENERATION}
   - cd Build
 
 script:
