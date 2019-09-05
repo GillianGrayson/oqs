@@ -13,5 +13,15 @@
       "buildCommandArgs": "",
       "ctestCommandArgs": ""
     }
+  ],
+  "variables": [
+    {
+      "name": "CODE_COVERAGE",
+      "value": "FALSE"
+    },
+    {
+      "name": "DOCS_GENERATION",
+      "value": "TRUE"
+    }
   ]
 }

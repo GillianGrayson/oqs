@@ -101,7 +101,7 @@ endif()
 # -------------------------------------------------------------------------
 # docs
 # -------------------------------------------------------------------------
-option (DOCS_GENERATION "Enable documentation generation" ON)
+option (DOCS_GENERATION "Enable documentation generation" OFF)
 if (DOCS_GENERATION)
 	add_subdirectory(docs)
 endif()

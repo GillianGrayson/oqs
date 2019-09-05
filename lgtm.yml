@@ -12,7 +12,7 @@ extraction:
       - export CXX=g++-8
     configure:
       command:
-        - cmake -H. -BBuild -DCMAKE_BUILD_TYPE=Release -Wdev -DCODE_COVERAGE=FALSE
+        - cmake -H. -BBuild -DCMAKE_BUILD_TYPE=Release -Wdev -DCODE_COVERAGE=FALSE -DDOCS_GENERATION=FALSE
     index:
       build_command:
         - cd Build
